@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aloe Vera Moisturizer | Chemical Prototype Project</title>
+    <style>
+        :root {
+            --green: #28664a;
+            --green-dark: #17452f;
+            --green-soft: #eaf4ec;
+            --cream: #fbf8ef;
+            --text: #25332b;
+            --muted: #637268;
+            --white: #ffffff;
+            --border: #dce7dc;
+            --gold: #d9b66f;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(251, 248, 239, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav {
+            max-width: 1120px;
+            margin: auto;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            font-weight: 800;
+            color: var(--green-dark);
+            letter-spacing: .2px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .hero {
+            background: radial-gradient(circle at 85% 25%, #d8e9d7 0, transparent 30%),
+                linear-gradient(135deg, #f1f7eb, #fbf8ef 70%);
+            padding: 78px 22px 68px;
+        }
+
+        .hero-inner {
+            max-width: 1120px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 42px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #dcecdf;
+            color: var(--green-dark);
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4.4rem);
+            line-height: 1.08;
+            margin: 18px 0;
+            color: var(--green-dark);
+        }
+
+        h2 {
+            color: var(--green-dark);
+            font-size: clamp(1.65rem, 3vw, 2.35rem);
+            line-height: 1.2;
+            margin: 0 0 12px;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: var(--green-dark);
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            max-width: 680px;
+            color: #526257;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--green);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-secondary {
+            color: var(--green);
+            background: transparent;
+        }
+
+        .leaf-art {
+            min-height: 310px;
+            border-radius: 30px;
+            background: linear-gradient(150deg, #d7e9d6, #f5f0d9);
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #d5e3d2;
+        }
+
+        .jar {
+            width: 190px;
+            height: 175px;
+            border-radius: 18px 18px 28px 28px;
+            background: linear-gradient(90deg, #f9fff4, #dfe9d4, #f8fff0);
+            border: 2px solid #c5d6bf;
+            box-shadow: 0 24px 38px #43684b24;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-5deg);
+        }
+
+        .jar:before {
+            content: "";
+            position: absolute;
+            top: -22px;
+            width: 150px;
+            height: 27px;
+            background: #38694b;
+            border-radius: 7px 7px 4px 4px;
+            border: 2px solid #2d593e;
+        }
+
+        .jar-label {
+            text-align: center;
+            color: var(--green-dark);
+            font-size: .9rem;
+            font-weight: 800;
+        }
+
+        .jar-label span {
+            display: block;
+            font-size: 1.7rem;
+            margin-bottom: 3px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 95px;
+            height: 35px;
+            background: #4c8a5e;
+            border-radius: 100% 0 100% 0;
+            opacity: .8;
+        }
+
+        .leaf.one {
+            left: 12%;
+            top: 20%;
+            transform: rotate(28deg);
+        }
+
+        .leaf.two {
+            right: 8%;
+            bottom: 18%;
+            transform: rotate(205deg);
+            background: #6ba477;
+        }
+
+        .leaf.three {
+            right: 15%;
+            top: 17%;
+            transform: rotate(145deg);
+            background: #7fae75;
+        }
+
+        section {
+            padding: 66px 22px;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: auto;
+        }
+
+        .section-intro {
+            max-width: 760px;
+            color: var(--muted);
+            margin: 0 0 28px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 22px;
+            box-shadow: 0 6px 20px #1d4c2d08;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .soft {
+            background: var(--green-soft);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .steps {
+            counter-reset: step;
+            display: grid;
+            gap: 14px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 14px;
+            align-items: start;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 17px;
+        }
+
+        .step:before {
+            counter-increment: step;
+            content: counter(step);
+            background: var(--green);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+        }
+
+        .step p {
+            margin: 4px 0 0;
+            color: var(--muted);
+        }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 22px;
+            border-radius: 16px;
+            background: white;
+            border: 1px solid var(--border);
+        }
+
+        .flow span {
+            background: #e7f1e5;
+            padding: 10px 12px;
+            border-radius: 9px;
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .arrow {
+            color: var(--green);
+            font-weight: 800;
+        }
+
+        .notice {
+            border-left: 5px solid #c08d31;
+            background: #fff4dc;
+            padding: 17px 20px;
+            border-radius: 10px;
+            color: #624b22;
+            margin-top: 20px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 570px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 14px 16px;
+            border-bottom: 1px solid #e8eee6;
+        }
+
+        th {
+            background: #eaf4ec;
+            color: var(--green-dark);
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--green);
+            font-size: 1.7rem;
+        }
+
+        .stat small {
+            color: var(--muted);
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #dcecdf;
+            color: var(--green);
+            display: grid;
+            place-items: center;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0 auto 12px;
+        }
+
+        .person p {
+            font-size: .9rem;
+            color: var(--muted);
+            margin: 3px 0;
+        }
+
+        .video-card {
+            background: var(--green-dark);
+            color: white;
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .video-card h3 {
+            color: white;
+        }
+
+        .video-card p {
+            color: #dcecdf;
+        }
+
+        .video-card .btn {
+            background: white;
+            color: var(--green-dark);
+            border-color: white;
+        }
+
+        footer {
+            background: #153c2a;
+            color: #dcecdf;
+            padding: 28px 22px;
+            text-align: center;
+            font-size: .9rem;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        .small {
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-inner,
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 48px 17px;
+            }
+
+            .hero {
+                padding: 54px 17px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: .82rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav" aria-label="Main navigation">
+            <div class="brand">🌿 Aloe Vera Prototype</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#ingredients">Ingredients</a>
+                <a href="#process">Process</a>
+                <a href="#testing">Testing</a>
+                <a href="#cost">Cost</a>
+                <a href="#team">Team</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div>
+                    <span class="eyebrow">MIT Academy of Engineering · Academic Year 2026–27</span>
+                    <h1>Preparation of an<br />Aloe Vera Moisturizer</h1>
+                    <p>A student chemical prototype exploring the role of aloe vera gel, glycerin, coconut oil and
+                        vitamin E in a moisturizer-like formulation.</p>
+                    <p class="small">Guided by Dr. Mamta Sardare</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="#process">Explore the Process ↓</a>
+                        <a class="btn btn-secondary" href="#findings">View Findings</a>
+                    </div>
+                </div>
+                <div class="leaf-art" aria-label="Illustration of a moisturizer jar with leaves">
+                    <span class="leaf one"></span><span class="leaf two"></span><span class="leaf three"></span>
+                    <div class="jar">
+                        <div class="jar-label"><span>🌿</span>ALOE VERA<br />MOISTURIZER<br /><small>STUDENT
+                                PROTOTYPE</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container two-col">
+                <div>
+                    <h2>About the Project</h2>
+                    <p>This project documents the preparation and preliminary observation of a simple moisturizer-like
+                        prototype. It is designed to help students understand ingredient functions, careful measurement,
+                        manual mixing, basic quality observations and laboratory safety.</p>
+                    <p>The work is an educational prototype, not a validated commercial cosmetic product. Appearance
+                        immediately after mixing cannot confirm long-term stability or microbiological safety.</p>
+                </div>
+                <div class="card">
+                    <h3>Project Objectives</h3>
+                    <ul>
+                        <li>Understand the expected role of each ingredient.</li>
+                        <li>Practice measuring and mixing a small batch.</li>
+                        <li>Observe appearance, odour and texture.</li>
+                        <li>Identify improvements needed for stability and safety.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ingredients" class="soft">
+            <div class="container">
+                <h2>Raw Materials & Their Functions</h2>
+                <p class="section-intro">The report identifies four main ingredients. Their expected roles are described
+                    below.</p>
+                <div class="grid">
+                    <article class="card">
+                        <div class="icon">🌱</div>
+                        <h3>Aloe Vera Gel</h3>
+                        <p>Forms the water-based gel portion and contributes to the formulation’s feel and hydration
+                            profile.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon">💧</div>
+                        <h3>Glycerin</h3>
+                        <p>A humectant that helps attract and retain moisture. Too much may make a formula feel sticky.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <div class="icon">🥥</div>
+                        <h3>Coconut Oil</h3>
+                        <p>An emollient oil that can help soften the skin surface and reduce the feeling of dryness.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon">🟡</div>
+                        <h3>Vitamin E</h3>
+                        <p>Included for antioxidant and skin-conditioning properties. It does not replace a
+                            preservative.</p>
+                    </article>
+                </div>
+                <div class="notice"><strong>Important:</strong> The supplied ingredient list does not include an
+                    emulsifier or preservative. The mixture may separate, and its microbiological safety has not been
+                    established.</div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h2>Preparation Process</h2>
+                <p class="section-intro">The reported method uses manual mixing and observation. Follow laboratory
+                    instructions and record actual quantities and conditions.</p>
+                <div class="flow" aria-label="Preparation process flow">
+                    <span>Prepare clean tools</span><b class="arrow">→</b>
+                    <span>Measure ingredients</span><b class="arrow">→</b>
+                    <span>Mix gel + glycerin</span><b class="arrow">→</b>
+                    <span>Mix oil + vitamin E</span><b class="arrow">→</b>
+                    <span>Combine gently</span><b class="arrow">→</b>
+                    <span>Observe and label</span>
+                </div>
+                <div class="two-col" style="margin-top:28px">
+                    <div class="steps">
+                        <div class="step">
+                            <div><strong>Prepare the workspace</strong>
+                                <p>Clean the work surface and use clean, dry equipment. Wear suitable protective
+                                    equipment.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div><strong>Measure ingredients</strong>
+                                <p>Record ingredient names, brands and actual quantities used in the batch.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div><strong>Prepare the portions</strong>
+                                <p>Mix aloe vera gel with glycerin. In a separate clean container, combine coconut oil
+                                    and vitamin E.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div><strong>Combine and inspect</strong>
+                                <p>Add the oil portion gradually while stirring gently. Record the sample’s appearance,
+                                    colour, odour and texture.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div><strong>Label the sample</strong>
+                                <p>Mark it as an educational prototype that has not been stability- or microbiologically
+                                    tested.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <h3>Batch Record (as reported)</h3>
+                            <div class="table-wrap">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Date prepared</th>
+                                            <td>30 September 2026</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Batch ID</th>
+                                            <td>A3</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Aloe vera gel</th>
+                                            <td>15 g (procedure record)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Coconut oil</th>
+                                            <td>2 ml (procedure record)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Vitamin E</th>
+                                            <td>2 capsules (procedure record)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Glycerin</th>
+                                            <td>2 ml (procedure record)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mixing</th>
+                                            <td>Manual mixing; approximately 2–3 minutes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="small">Please verify quantities against the original lab notebook: other sections
+                                of the report contain different ingredient and mass figures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testing" class="soft">
+            <div class="container">
+                <h2>Quality Control & Observations</h2>
+                <p class="section-intro">The report records preliminary visual and sensory observations. These do not
+                    establish product safety or shelf life.</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Check</th>
+                                <th>Observation / status in report</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Appearance and colour</td>
+                                <td>Milky whitish; also described as transparent in the report.</td>
+                            </tr>
+                            <tr>
+                                <td>Odour</td>
+                                <td>Pleasant, soft odour.</td>
+                            </tr>
+                            <tr>
+                                <td>Texture</td>
+                                <td>Smooth, thin gel with a slightly greasy feel.</td>
+                            </tr>
+                            <tr>
+                                <td>pH</td>
+                                <td>Reported as approximately 6; measurement method is not specified.</td>
+                            </tr>
+                            <tr>
+                                <td>Phase separation</td>
+                                <td>Must be checked at defined intervals; long-term stability is not established.</td>
+                            </tr>
+                            <tr>
+                                <td>Microbiological quality</td>
+                                <td>Not tested; laboratory results are not available.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="notice"><strong>Safety note:</strong> Do not apply or distribute this prototype as a
+                    finished cosmetic product. Appropriate formulation review, stability testing and
+                    microbiological/preservative-efficacy assessment are needed first.</div>
+            </div>
+        </section>
+
+        <section id="findings">
+            <div class="container">
+                <h2>Yield & Efficiency</h2>
+                <p class="section-intro">Yield should be calculated from reliable measurements taken on the same mass
+                    basis. The report contains differing mass figures, so the final recovery should be confirmed before
+                    presenting a percentage.</p>
+                <div class="stats">
+                    <div class="stat"><strong>2–3 min</strong><small>Manual mixing time reported</small></div>
+                    <div class="stat"><strong>Batch A3</strong><small>Prototype batch identifier</small></div>
+                    <div class="stat"><strong>Not tested</strong><small>Microbiological safety and shelf life</small>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:18px">
+                    <h3>Yield calculation</h3>
+                    <p>Percentage recovery = (final recovered mass ÷ total mass of ingredients added) × 100</p>
+                    <p class="small">Enter verified input and output masses before calculating. Do not confuse mass
+                        recovery with chemical reaction yield.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cost" class="soft">
+            <div class="container two-col">
+                <div>
+                    <h2>Cost Analysis</h2>
+                    <p class="section-intro">The report gives an estimated student-prototype cost of ₹53. Confirm actual
+                        local prices and quantities before using this as a final cost.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Estimated cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Aloe vera gel</td>
+                                    <td>₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>Glycerin</td>
+                                    <td>₹3</td>
+                                </tr>
+                                <tr>
+                                    <td>Coconut oil</td>
+                                    <td>₹10</td>
+                                </tr>
+                                <tr>
+                                    <td>Vitamin E ingredient</td>
+                                    <td>₹15</td>
+                                </tr>
+                                <tr>
+                                    <td>Small plastic box</td>
+                                    <td>₹15</td>
+                                </tr>
+                                <tr>
+                                    <td>Shared equipment / energy</td>
+                                    <td>₹10</td>
+                                </tr>
+                                <tr>
+                                    <th>Total estimated cost</th>
+                                    <th>₹53</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <h2>Safety & Environment</h2>
+                    <div class="card">
+                        <ul>
+                            <li>Use clean tools and clearly label the sample.</li>
+                            <li>Do not return unused ingredients to their original containers.</li>
+                            <li>Dispose of the prototype according to laboratory instructions.</li>
+                            <li>Do not pour bulk oil into drains.</li>
+                            <li>Do not claim a shelf life without suitable testing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <div class="container">
+                <h2>Conclusion & Recommendations</h2>
+                <div class="card">
+                    <p>The preparation of the Aloe Vera Moisturizer prototype was a useful practical activity that
+                        helped us understand the roles of aloe vera gel, glycerin, coconut oil and vitamin E. The sample
+                        was manually mixed and observed for its appearance, odour and texture.</p>
+                    <p>The activity provided experience in ingredient measurement, mixing techniques, quality
+                        observation and laboratory safety. It also showed that combining ingredients does not
+                        automatically produce a stable cosmetic product.</p>
+                    <p>Further work should use clearly specified cosmetic-grade ingredients and a qualified instructor’s
+                        guidance to select a suitable emulsifier and preservative. Appropriate stability,
+                        packaging-compatibility and microbiological tests are required before any shelf-life or
+                        routine-use claim can be made.</p>
+                    <p><strong>Overall,</strong> the project gave the team practical knowledge of basic cosmetic
+                        formulation and the importance of quality control and further testing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="soft">
+            <div class="container">
+                <h2>Project Team</h2>
+                <p class="section-intro">MIT Academy of Engineering · Guided by Dr. Mamta Sardare</p>
+                <div class="team">
+                    <div class="card person">
+                        <div class="avatar">TG</div>
+                        <h3>Tanvi Gundale</h3>
+                        <p>PRN: 202501100094</p>
+                    </div>
+                    <div class="card person">
+                        <div class="avatar">SC</div>
+                        <h3>Shrawani Chaware</h3>
+                        <p>PRN: 202501100095</p>
+                    </div>
+                    <div class="card person">
+                        <div class="avatar">YG</div>
+                        <h3>Yogita Gaikwad</h3>
+                        <p>PRN: 202501100100</p>
+                    </div>
+                    <div class="card person">
+                        <div class="avatar">SG</div>
+                        <h3>Samiksha Ghodake</h3>
+                        <p>PRN: 202501100106</p>
+                    </div>
+                </div>
+                <div class="video-card" style="margin-top:26px">
+                    <h3>Project Demonstration Video</h3>
+                    <p>Open the project video using the link provided in the report.</p>
+                    <a class="btn" href="https://youtu.be/eAi-TQjfOmc?si=RmumkFPzYF7PCrZB" target="_blank"
+                        rel="noopener noreferrer">Watch Project Video ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Preparation of an Aloe Vera Moisturizer</strong></p>
+        <p>MIT Academy of Engineering, Alandi (D), Pune · Academic Year 2026–27</p>
+        <p>Educational prototype only — not stability-tested or microbiologically tested.</p>
+    </footer>
+    <script>
+        // Smooth-scroll fallback for browsers that need it.
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', event => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
